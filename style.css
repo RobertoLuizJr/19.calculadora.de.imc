@@ -1,0 +1,184 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%;
+
+  --title-color: #0C3440;
+  
+  --label-color: #00453A;
+  
+  --input-text-color: #065099;
+  --border-input-color: #878b8f80;
+  --outline-color: #02799D;
+  --input-background-color: #DCE2E9;
+  --input-border-color: #495057;
+  --placeholder-color: #495057;
+  --button-text-color: white;
+  --button-background-color: #02799D;
+  --background-button-hover: #656e15;
+  
+  --error-text-color: white;
+  --error-background-color: #F03E3E;
+}
+
+body {
+  background-color: #040924;
+  font-family: "Roboto", sans-serif;
+}
+
+body, button, input {
+  font-size: 1.6rem;
+  line-height: 2rem;
+}
+
+.container, .modal-wrapper {
+  display: grid;
+  height: 100vh;
+  place-content: center;
+  padding: 1.6rem;
+}
+
+.card, .modal-card {
+  background-color: white;
+  padding: 4.8rem 6.4rem 6.4rem;
+  max-width: 42.8rem;
+  margin-inline: auto;
+  box-shadow: .4rem .4rem .4rem rgba(250, 248, 248, 0.897);
+  border-radius: .6rem;
+}
+
+form {
+  width: 30rem;
+}
+
+form h1 {
+  font-size: 3.2rem;
+  font-weight: 700;
+  line-height: 4rem;
+  margin-bottom: 3.2rem;
+  color: var(--title-color)
+}
+
+/*Como o label tem por definicao um display inline, o margin-botton so surtira efeito se o display for modificado pra block*/
+.input-wrapper label{
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 1.8rem;
+  color: var(--label-color);
+  margin-bottom: .4rem;
+  display: block;
+}
+
+.input-wrapper input {
+  border-radius: .4rem;
+  border: 2.2px solid var(--border-input-color);
+  background: var(--input-background-color);
+  width: 100%;
+  padding: 1.6rem;
+}
+
+.input-wrapper input:focus {
+  outline: 2.4px solid var(--outline-color);
+  color: var(--input-text-color);
+  font-weight: 700;
+}
+
+.input-wrapper input::placeholder {
+  color: var(--placeholder-color)
+}
+
+/*Aplica um margin-top apenas no input-wrapper que tem outro input-wrapper anterior a ele*/
+.input-wrapper + .input-wrapper {
+  margin-top: 2rem;
+}
+
+form button {
+  margin-top: 3.2rem;
+  padding: 1.6rem;
+  width: 100%;
+  border: none;
+  background: var(--button-background-color);
+  color: var(--button-text-color);
+  border-radius: .4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .4s;
+}
+
+button:hover {
+  background: var(--background-button-hover);
+}
+
+/*Modal. Obs: Inset substitue e automatiza todas as posicoes liberadas pelo absolute*/
+.modal-wrapper {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+
+  opacity: 0;
+  visibility: hidden;
+}
+
+.modal-wrapper.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-card {
+  position: relative;
+}
+
+.modal-card button {
+  background: none;
+  border: none;
+  position: absolute;
+
+  top: 0;
+  right: 0;
+  padding: 1.6rem;
+
+  cursor: pointer;
+  transition: transform .2s;
+}
+
+.modal-card button:hover {
+  transform: scale(1.2);
+}
+
+.alert-error {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  background-color: var(--error-background-color);
+
+  text-align: center;
+  font-weight: bold;
+  color: var(--error-text-color);
+  padding: .8rem 0;
+
+  visibility: hidden;
+  opacity: 0;
+
+  transform: translateY(-40px);
+  transition: transform .5s;
+}
+
+.alert-error.open {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+
+
