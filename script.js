@@ -67,3 +67,6 @@ function handleKeydown(event) {
     location.reload()
   }
 }
+
+inputWeigth.oninput = function() {alertError.close()}
+inputHeigth.oninput = function() {alertError.close()}
